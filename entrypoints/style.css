@@ -144,3 +144,39 @@ table {
 #sunburst {
   margin: 16px 0;
 }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    background: #181a1b;
+    color: #e0e0e0;
+  }
+  body {
+    background: #181a1b;
+    color: #e0e0e0;
+  }
+  .webtreemap-node {
+    border-color: #444;
+    background: #23272a;
+  }
+  .webtreemap-node:focus,
+  .webtreemap-node:hover {
+    background: #333;
+  }
+  .webtreemap-caption {
+    color: #e0e0e0;
+  }
+  .resize-controls {
+    background: rgba(24, 26, 27, 0.85);
+    border-color: #888;
+    color: #e0e0e0;
+  }
+  table {
+    border-color: #444;
+  }
+  th, td {
+    border-color: #444;
+    background: #23272a;
+    color: #e0e0e0;
+  }
+}

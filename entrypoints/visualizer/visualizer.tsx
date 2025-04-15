@@ -14,6 +14,21 @@ const pb = (b) =>
     space: false,
   });
 
+function useSystemColorScheme() {
+  const [scheme, setScheme] = useState(() =>
+    window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light',
+  );
+  useEffect(() => {
+    const mql = window.matchMedia('(prefers-color-scheme: dark)');
+    const handler = (e) => setScheme(e.matches ? 'dark' : 'light');
+    mql.addEventListener('change', handler);
+    return () => mql.removeEventListener('change', handler);
+  }, []);
+  return scheme;
+}
+
 function populateSize(n) {
   if (n.children) {
     for (const c of n.children) {
@@ -278,6 +293,7 @@ function TreemapView({ data }) {
 function SunburstView({ data }) {
   const container = useRef(null);
   const [width, setWidth] = useState(null);
+  const colorScheme = useSystemColorScheme();
   useEffect(() => {
     const containerEl = container.current;
     if (!containerEl) return;
@@ -290,9 +306,17 @@ function SunburstView({ data }) {
     };
   }, []);
 
+  // Choose colors based on color scheme
+  const sunburstColors =
+    colorScheme === 'dark'
+      ? { color: () => 'dimgray', strokeColor: () => 'black' }
+      : { color: () => 'lightgrey', strokeColor: () => 'white' };
+
   return (
     <div id="sunburst" ref={container}>
       <Sunburst
+        color={sunburstColors.color}
+        strokeColor={sunburstColors.strokeColor}
         data={formatTreeMapData(data)} // Reuse treemap data
         width={width || undefined}
         label="id"
@@ -307,6 +331,7 @@ function SunburstView({ data }) {
 }
 
 function TableView({ data }) {
+  const colorScheme = useSystemColorScheme();
   return (
     <>
       {Object.entries(data.cacheEntries).map(([key, entry]) => {
@@ -322,6 +347,7 @@ function TableView({ data }) {
               {pb(totalBytes)})
             </p>
             <DataTable
+              theme={colorScheme}
               columns={[
                 {
                   minWidth: '3ch',
