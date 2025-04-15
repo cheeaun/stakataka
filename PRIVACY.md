@@ -1,6 +1,6 @@
 ## Privacy Policy
 
-Stakataka is a Chrome extension that visualizes Service Worker Cache Storage for the website you are viewing. The extension does not collect, store, or transmit any personal information or browsing data. All cache data is accessed locally in your browser and is never sent to any server or third party.
+Stakataka is a browser extension that visualizes Service Worker Cache Storage for the website you are viewing. The extension does not collect, store, or transmit any personal information or browsing data. All cache data is accessed locally in your browser and is never sent to any server or third party.
 
 **Permissions:**  
 - **activeTab**: Used to access and visualize cache data for the current website only when you use the extension.
