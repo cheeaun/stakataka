@@ -43,6 +43,14 @@ npm install
 npm run dev
 ```
 
+### Notes
+
+`CHROME_REFRESH_TOKEN` doesn't seem to be able to be generated via `wxt` ([Issue #1462](https://github.com/wxt-dev/wxt/issues/1462)). Follow instructions from here: https://github.com/fregante/chrome-webstore-upload-keys where this command is needed in later steps:
+
+```
+npx chrome-webstore-upload-keys
+```
+
 ## Technologies
 
 - [WXT](https://wxt.dev/) - Web Extension development framework
