@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useReducer } from 'react';
 import ReactDOM from 'react-dom/client';
 import DataTable from 'react-data-table-component';
 import prettyBytes from 'pretty-bytes';
@@ -103,6 +103,7 @@ const App = () => {
     setView(newView);
   }
 
+  const [reloadCount, reload] = useReducer((c) => c + 1, 0);
   useEffect(() => {
     // get origin from search params
     const searchParams = new URLSearchParams(window.location.search);
@@ -117,7 +118,7 @@ const App = () => {
         setUiState('error');
       }
     }
-  }, []);
+  }, [reloadCount]);
 
   return (
     <>
@@ -173,7 +174,7 @@ const App = () => {
             setUiState('loading');
             const cacheEntries = await getCacheEntriesByTabId(tabId);
             saveCacheEntries(tabId, tabURLOrigin, cacheEntries);
-            setUiState('loaded');
+            reload();
           }}
         >
           Refresh
