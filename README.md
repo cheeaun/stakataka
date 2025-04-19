@@ -4,7 +4,9 @@
 
 A browser extension that visualizes (Service Worker) Cache Storage for web sites. Stakataka helps developers understand what's stored in the browser's cache storage ([`window.caches`](https://developer.mozilla.org/en-US/docs/Web/API/Window/caches), [`CacheStorage`](https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage)) and how much space it occupies through multiple visualization options.
 
-Available for Chrome, for now.
+- Chrome: [chromewebstore.google.com/detail/stakataka/mdekjccfminpcgmcpmjnfgimifhibagc](https://chromewebstore.google.com/detail/stakataka/mdekjccfminpcgmcpmjnfgimifhibagc)
+- Edge: [microsoftedge.microsoft.com/addons/detail/stakataka/hkkljdlfakafpnfpgdnamhpmhhjphlkc](https://microsoftedge.microsoft.com/addons/detail/stakataka/hkkljdlfakafpnfpgdnamhpmhhjphlkc)
+- Firefox: [addons.mozilla.org/en-US/firefox/addon/stakataka/](https://addons.mozilla.org/en-US/firefox/addon/stakataka/)
 
 > [!NOTE]
 > Cache storage is different than the browser's own cache, localStorage, sessionStorage, IndexedDB, and other storage APIs. It is used by Service Workers to cache network requests and responses for offline access and faster loading times.
